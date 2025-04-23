@@ -21,13 +21,13 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Publish
-        run: dotnet publish TestBlazorApp.csproj -c Release
+        run: dotnet publish TestBlazorApp/TestBlazorApp.csproj -c Release
 
       - name: Add .nojekyll
-        run: touch bin/Release/net8.0/publish/wwwroot/.nojekyll
+        run: touch TestBlazorApp/bin/Release/net8.0/publish/wwwroot/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: bin/Release/net8.0/publish/wwwroot
+          publish_dir: TestBlazorApp/bin/Release/net8.0/publish/wwwroot
